@@ -25,15 +25,19 @@ A Symfony-powered e-commerce platform for an art gallery to showcase and sell ar
    git clone https://github.com/ayoubmek/Galegie_d-art.git
    cd Galegie_d-art
 2. Install dependencies:
+   ```bash
    composer install
    
-3. Set up environment variables:
+4. Set up environment variables:
+   ```bash
    cp .env .env.local
    
-4. Run database migrations:
+6. Run database migrations:
+   ```bash
    php bin/console doctrine:migrations:migrate
 
-5. Start the Symfony server:
+8. Start the Symfony server:
+   ```bash
    symfony serve
 
 
