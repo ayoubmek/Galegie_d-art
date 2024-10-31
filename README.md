@@ -28,16 +28,21 @@ A Symfony-powered e-commerce platform for an art gallery to showcase and sell ar
    ```bash
    composer install
    
-4. Set up environment variables:
+3. Set up environment variables:
    ```bash
    cp .env .env.local
    
-6. Run database migrations:
+4. Run database migrations:
    ```bash
    php bin/console doctrine:migrations:migrate
 
-8. Start the Symfony server:
+5. Start the Symfony server:
    ```bash
    symfony serve
+6. Access the application: Open http://127.0.0.1:8000 in your browser to view the application.
 
+Usage
+ Register as a client or log in to browse and purchase artworks.
+ Admins can log in to manage artists, artworks, and perform daily backups.
+ Clients can vote on their favorite artworks and request past purchase invoices by contacting support.
 
