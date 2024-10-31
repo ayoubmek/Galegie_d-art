@@ -1,0 +1,38 @@
+{# templates/artist/new.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Create New Artist{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>Create New Artist</h1>
+
+        {{ form_start(form) }}
+            <div class="form-group mb-3">
+                {{ form_label(form.name, 'Nom de l\'artiste') }}
+                {{ form_widget(form.name, { 'attr': { 'class': 'form-control' } }) }}
+                {{ form_errors(form.name) }}
+            </div>
+
+            <div class="form-group mb-3">
+                {{ form_label(form.phone, 'Phone de l\'artiste') }}
+                {{ form_widget(form.phone, { 'attr': { 'class': 'form-control' } }) }}
+                {{ form_errors(form.phone) }}
+            </div>
+
+            <div class="form-group mb-3">
+                {{ form_label(form.email, 'Email de l\'artiste') }}
+                {{ form_widget(form.email, { 'attr': { 'class': 'form-control' } }) }}
+                {{ form_errors(form.email) }}
+            </div>
+
+            <div class="form-group mb-3">
+                {{ form_label(form.biography, 'Biographie') }}
+                {{ form_widget(form.biography, { 'attr': { 'class': 'form-control' } }) }}
+                {{ form_errors(form.biography) }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

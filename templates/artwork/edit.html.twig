@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Artwork{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>Edit Artwork</h1>
+
+        {{ form_start(form) }}
+            <div class="form-group mb-3">
+                {{ form_label(form.title, 'Artwork Title') }}
+                {{ form_widget(form.title, { 'attr': { 'class': 'form-control' } }) }}
+                {{ form_errors(form.title) }}
+            </div>
+
+            <div class="form-group mb-3">
+                {{ form_label(form.description, 'Description') }}
+                {{ form_widget(form.description, { 'attr': { 'class': 'form-control', 'rows': '4' } }) }}
+                {{ form_errors(form.description) }}
+            </div>
+
+            <div class="form-group mb-3">
+                {{ form_label(form.price, 'Price') }}
+                {{ form_widget(form.price, { 'attr': { 'class': 'form-control' } }) }}
+                {{ form_errors(form.price) }}
+            </div>
+
+            <div class="form-group mb-3">
+                {{ form_label(form.artist, 'Select Artist') }}
+                {{ form_widget(form.artist, { 'attr': { 'class': 'form-control' } }) }}
+                {{ form_errors(form.artist) }}
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary">Update Artwork</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

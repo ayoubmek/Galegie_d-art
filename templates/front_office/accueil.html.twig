@@ -1,0 +1,111 @@
+{% extends 'basefrontoffice.html.twig' %}
+{% block body %}
+  <div class="container-fluid px-2 px-md-4">
+  <!-- -------- START HEADER 8 w/ two background colors ------- -->
+<header class="header-rounded-images">
+  <div class="page-header min-vh-90">
+    <img class="position-absolute fixed-top ms-auto w-50 h-100 z-index-0 d-none d-sm-none d-md-block border-radius-section border-top-end-radius-0 border-top-start-radius-0 border-bottom-end-radius-0" src="https://images.unsplash.com/photo-1538681105587-85640961bf8b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="image" loading="lazy">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 d-flex">
+          <div class="card card-body blur text-md-start text-center px-sm-5 shadow-lg mt-sm-5 py-sm-5">
+         <h2 class="text-primary mb-4">Discover Masterpieces</h2>
+
+<p class="lead text-dark pe-md-5 me-md-5">
+    Explore the journey behind our most exquisite collections and the artistry that brings these works to life.
+</p>
+
+            <div class="buttons">
+              <button type="button" class="btn bg-gradient-primary mt-4">Contact Us</button>
+              <button type="button" class="btn btn-outline-secondary mt-4 ms-2">Read More</button>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-3 col-6 p-0">
+                <img class="w-100" src="../../assets/img/logos/gray-logos/logo-pinterest.svg" alt="logo">
+              </div>
+              <div class="col-md-3 col-6 p-0">
+                <img class="w-100" src="../../assets/img/logos/gray-logos/logo-netflix.svg" alt="logo">
+              </div>
+              <div class="col-md-3 col-6 p-0">
+                <img class="w-100" src="../../assets/img/logos/gray-logos/logo-coinbase.svg" alt="logo">
+              </div>
+              <div class="col-md-3 col-6 p-0">
+                <img class="w-100" src="../../assets/img/logos/gray-logos/logo-nasa.svg" alt="logo">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- -------- END HEADER 9 w/ two background colors ------- -->
+<br><br><br>
+    
+    <div class="card card-body mx-2 mx-md-2 mt-n6">
+    
+            <div class="row">
+        <div class="col-lg-12 position-relative z-index-2">
+            <div class="row">
+      <div class="col-8 mx-auto text-center mb-5">
+        <span class="badge badge-primary mb-2">Co-working</span>
+        <h2>Explore our places in London </h2>
+        <p>
+          If you can’t decide, the answer is no. If two equally difficult paths,
+          choose the one more painful in the short term (pain avoidance
+          is creating an illusion of equality).
+        </p>
+      </div>
+    </div>
+
+          <div class="row mt-3">
+                    {% for artist in artists %}
+              {% for artwork in artist.getArtworks() %}
+            <div class="col-lg-4 col-md-6">
+              <div class="card" data-animation="true">
+                <div class="card-header p-2 position-relative z-index-2 bg-transparent">
+                  <a class="d-block blur-shadow-image">
+                    <img src="{{ asset('galerie/assets/img/' ~ artwork.imagePath) }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                  </a>
+                  <div class="colored-shadow" style="background-image: url(https://images.unsplash.com/photo-1527547637224-a93d42c7b332?q=80&amp;w=1200&amp;auto=format&amp;fit=crop"></div>
+                </div>
+                <div class="card-body text-left">
+                  <h5 class="mb-1 text-gradient text-primary">
+                    <a href="javascript:;">{{artwork.title}}</a>
+                  </h5>
+                  <p class="mb-0 text-sm">
+                     {{artwork.description}}.
+                  </p>
+                </div>
+                <hr class="dark horizontal my-0">
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div class="d-block d-md-flex align-items-center">
+                  <a href="javascript:;">
+                    <img  src="{{ asset('galerie/assets/img/' ~ artist.img) }}"   class="avatar avatar-s rounded-circle me-2" alt="profile-image">
+                  </a>
+                  <div class="mx-0 mx-md-3">
+                    <a href="javascript:;" class="text-dark font-weight-600 text-sm">{{ artist.name }}</a>
+                    <small class="d-block text-muted">3 days ago</small>
+                  </div>
+                </div>
+                  <p class="font-weight-bold text-dark my-auto">${{artwork.price}}</p>
+                </div>
+              </div>
+            </div>
+      
+            {% endfor %}
+               {% endfor %}
+          </div>
+
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+    </div>
+
+    <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+<div class="commonninja_component pid-286a2ac5-63a6-492b-b380-82a4ed925348"></div>
+{% endblock %}

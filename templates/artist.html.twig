@@ -1,0 +1,134 @@
+
+{% extends 'base.html.twig' %}
+{% block nompage %}Artist{% endblock %}
+
+{% block body %}
+
+  <div class="container-fluid py-2">
+    <div class="row">
+      <div class="col-12">
+
+        <div class="card">
+
+          <div class="card-header pb-0">
+            <div class="d-lg-flex">
+              <div>
+                <h5 class="mb-0">All Artist</h5>
+                {% if app.flashes('success') is not empty %}
+                    <div class="alert alert-primary alert-dismissible text-white fade show" role="alert">
+                        <span class="alert-icon align-middle">
+                            <span class="material-symbols-rounded text-md">
+                                thumb_up_off_alt
+                            </span>
+                        </span>
+                        <span class="alert-text">
+                            <strong>Success!</strong>  Artist deleted successfully!
+
+                        </span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+                <p class="text-sm mb-0">
+                  Explore our collection of unique and beautiful artists around the world.
+                </p>
+              </div>
+              <div class="ms-auto my-auto mt-lg-0 mt-4">
+                <div class="ms-auto my-auto">
+                  <a href="{{ path('artist_new') }}" class="btn bg-gradient-dark btn-sm mb-0">+&nbsp; New Artist</a>
+                  <button type="button" class="btn btn-outline-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#import">
+                    Import
+                  </button>
+                  <div class="modal fade" id="import" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog mt-lg-10">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="ModalLabel">Import CSV</h5>
+                          <i class="material-symbols-rounded ms-3">file_upload</i>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>You can browse your computer for a file.</p>
+                          <div class="input-group input-group-dynamic mb-3">
+                            <label class="form-label">Browse file...</label>
+                            <input type="email" class="form-control" onfocus="focused(this)" onfocusout="defocused(this)">
+                          </div>
+                          <div class="form-check is-filled">
+                            <input class="form-check-input" type="checkbox" value="" id="importCheck" checked="">
+                            <label class="custom-control-label" for="importCheck">I accept the terms and conditions</label>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn bg-gradient-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn bg-gradient-dark btn-sm">Upload</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm export mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="button">Export</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pb-0">
+            <div class="table-responsive">
+              <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"><div class="dataTable-top"><div class="dataTable-dropdown"></div><div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"></div></div>
+              <div class="dataTable-container">
+              <table class="table table-flush dataTable-table" id="products-list">
+                    <thead class="thead-light">
+                    <tr><th data-sortable="" style="width: 30.8698%;">
+                    <a href="#" >Name</a></th>
+                    <th data-sortable="" style="width: 29.7297%;"><a href="#" >Email</a></th>
+                    <th data-sortable="" style="width: 23.5872%;"><a href="#" >biography</a></th>
+                    <th data-sortable="" style="width: 30.9582%;"><a href="#" >phone</a></th>
+                      <th data-sortable="" style="width: 34.8894%;"><a href="#" >Action</a></th></tr>
+                    </thead>
+                    <tbody>
+                    {% for artist in artists %}
+
+                    <tr>
+                      <td>
+                        <div class="d-flex">
+                        <img src="{{ asset('galerie/assets/img/' ~ artist.img) }}" class="avatar avatar-sm rounded-circle me-2">
+                          <h6 class="ms-3 my-auto">{{ artist.name }}</h6>
+                        </div>
+                      </td><td class="text-sm">{{ artist.email }}</td>
+                     <td class="text-sm" data-bs-original-title="All Biography : {{ artist.biography }}">
+                        {{ artist.biography |length > 20 ? artist.biography|slice(0, 20) ~ '...' : artist.biography }}
+                     </td>
+                      <td ><span class="badge badge-danger badge-sm">{{ artist.phone }}</span></td>
+
+                      <td class="text-sm">
+                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview Artist">
+                          <i class="material-symbols-rounded text-secondary position-relative text-lg">visibility</i>
+                        </a>
+                        <a href="{{ path('artist_edit', {'id': artist.id}) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit Artist">
+                          <i class="material-symbols-rounded text-secondary position-relative text-lg">drive_file_rename_outline</i>
+                        </a>
+                        <a  href="{{ path('artist_delete', {'id': artist.id}) }}" data-bs-toggle="tooltip" data-bs-original-title="Delete Artist">
+                          <i class="material-symbols-rounded text-secondary position-relative text-lg">delete</i>
+                        </a>
+                      </td></tr>
+                    {% endfor %}
+
+                    </tbody>
+
+                  </table></div><div class="dataTable-bottom"><div class="dataTable-info"></div><nav class="dataTable-pagination"><ul class="dataTable-pagination-list"><li class="pager"><a href="#" data-page="1">‹</a></li><li class="active"><a href="#" data-page="1">1</a></li><li class=""><a href="#" data-page="2">2</a></li><li class=""><a href="#" data-page="3">3</a></li><li class="pager"><a href="#" data-page="2">›</a></li></ul></nav></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

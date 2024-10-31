@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+{% block nompage %}Artwork Details{% endblock %}
+{% block body %}
+<div class="container-fluid py-2">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="mb-4">Artwork Details</h5>
+              <div class="row">
+                <div class="col-xl-5 col-lg-6 text-center">
+                      <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{{ asset('galerie/assets/img/' ~ artwork.imagePath) }}"alt="chair">
+                   <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="pswp__bg"></div>
+                    <!-- Slides wrapper with overflow:hidden. -->
+                    <div class="pswp__scroll-wrap">
+                      <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+                      <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+                      <div class="pswp__container" style="transform: translate3d(0px, 0px, 0px);">
+                        <div class="pswp__item" style="display: block; transform: translate3d(-1530px, 0px, 0px);"><div class="pswp__zoom-wrap" style="transform: translate3d(467px, 44px, 0px) scale(1);"><img class="pswp__img border-radius-lg" src="../../../assets/img/products/product-details-4.jpg" style="opacity: 1; width: 433px; height: 519px;"></div></div>
+                        <div class="pswp__item" style="transform: translate3d(0px, 0px, 0px);"><div class="pswp__zoom-wrap" style="transform: translate3d(586.391px, 460.016px, 0px) scale(0.207623);"><img class="pswp__img pswp__img--placeholder" src="../../../assets/img/products/product-details-5.jpg" style="width: 433px; height: 519px; display: none;"><img class="pswp__img" src="../../../assets/img/products/product-details-5.jpg" style="display: block; width: 433px; height: 519px;"></div></div>
+                        <div class="pswp__item" style="display: block; transform: translate3d(1530px, 0px, 0px);"><div class="pswp__zoom-wrap" style="transform: translate3d(467px, 44px, 0px) scale(1);"><img class="pswp__img border-radius-lg" src="../../../assets/img/products/product-details-2.jpg" style="opacity: 1; width: 433px; height: 519px;"></div></div>
+                      </div>
+                      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                      <div class="pswp__ui pswp__ui--fit pswp__ui--hidden">
+                        <div class="pswp__top-bar">
+                          <!--  Controls are self-explanatory. Order can be changed. -->
+                          <div class="pswp__counter">4 / 4</div>
+                          <button class="btn btn-white btn-sm pswp__button pswp__button--close">Close (Esc)</button>
+                          <button class="btn btn-white btn-sm pswp__button pswp__button--fs">Fullscreen</button>
+                          <button class="btn btn-white btn-sm pswp__button pswp__button--arrow--left">Prev
+                          </button>
+                          <button class="btn btn-white btn-sm pswp__button pswp__button--arrow--right">Next
+                          </button>
+                          <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                          <!-- element will get class pswp__preloader--active when preloader is running -->
+                          <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                              <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                          <div class="pswp__share-tooltip"></div>
+                        </div>
+                        <div class="pswp__caption">
+                          <div class="pswp__caption__center"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-5 mx-auto">
+                  <h3 class="mt-lg-0 mt-4"> {{artwork.title}}</h3>
+                  <div class="rating">
+                    <i class="material-symbols-rounded text-lg">grade</i>
+                    <i class="material-symbols-rounded text-lg">grade</i>
+                    <i class="material-symbols-rounded text-lg">grade</i>
+                    <i class="material-symbols-rounded text-lg">grade</i>
+                    <i class="material-symbols-rounded text-lg">star_outline</i>
+                  </div>
+                  <br>
+                   <h4>${{artwork.price}}</h4>
+                  <span class="badge badge-success">In Stock</span>
+                  <br>
+                  <label class="mt-4">Description</label>
+                  <ul>
+               {{artwork.description}}
+                  </ul>
+                  <div class="row mt-4">
+                    <div class="col-lg-5">
+                      <button class="btn bg-gradient-dark mb-0 mt-lg-auto w-100" type="button" name="button">Add to cart</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+{% endblock %}
